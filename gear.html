@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gear Inventory | ECR Rental Studio</title>
+    <meta name="description" content="Explore our elite camera and drone inventory. RED, ARRI, DJI, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-black text-white selection:bg-orange-500/30">
+    <div id="loader"
+        class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black transition-opacity duration-1000">
+        <div class="relative">
+            <div class="h-24 w-24 border-4 border-orange-600/20 border-t-orange-600 rounded-full animate-spin"></div>
+            <div class="absolute inset-0 flex items-center justify-center">
+                <span class="text-orange-600 font-bold text-xl">ECR</span>
+            </div>
+        </div>
+    </div>
+
+    <canvas id="canvas-3d" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
+    <div id="cursor-glow"
+        class="fixed w-64 h-64 bg-orange-600/20 rounded-full blur-[100px] pointer-events-none -z-5 transition-transform duration-300 ease-out">
+    </div>
+
+    <nav id="navbar"
+        class="fixed top-0 left-0 w-full z-50 px-8 py-6 flex justify-between items-center transition-all duration-500 backdrop-blur-sm bg-black/10">
+        <div class="text-2xl font-extrabold tracking-tighter text-white">
+            <a href="/">ECR <span class="text-orange-600">STUDIO</span></a>
+        </div>
+        <div class="hidden md:flex gap-8 text-sm uppercase tracking-widest font-medium text-gray-400">
+            <a href="/" class="hover:text-white transition-colors">Home</a>
+            <a href="/gear.html" class="text-white transition-colors">Gear</a>
+            <a href="/pricing.html" class="hover:text-white transition-colors">Pricing</a>
+            <a href="/contact.html" class="hover:text-white transition-colors">Contact</a>
+        </div>
+        <a href="/contact.html"
+            class="bg-orange-600 hover:bg-orange-700 text-white px-6 py-2 rounded-full text-sm font-bold transition-all shadow-lg shadow-orange-600/20">
+            RENT GEAR
+        </a>
+    </nav>
+
+    <main class="pt-32">
+        <section id="showcase" class="py-24 px-8 md:px-24">
+            <h1 class="text-6xl md:text-8xl font-extrabold mb-16 text-center">ELITE <span
+                    class="text-orange-600">INVENTORY</span></h1>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                <!-- Cinema Cameras -->
+                <div
+                    class="gear-card group relative p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl overflow-hidden cursor-pointer">
+                    <div class="relative z-10">
+                        <span
+                            class="text-orange-600 text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Professional</span>
+                        <h3 class="text-3xl font-bold mb-4 text-white">Cinema Cameras</h3>
+                        <p class="text-gray-400 mb-8 leading-relaxed">Top-tier production systems including RED
+                            V-Raptor, ARRI Alexa Mini LF, and Blackmagic URSA G2.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center gap-2">✔ 8K Raw Recording</li>
+                            <li class="flex items-center gap-2">✔ High Dynamic Range</li>
+                            <li class="flex items-center gap-2">✔ PL/EF Mount Support</li>
+                        </ul>
+                    </div>
+                    <img src="./src/assets/hero_camera.png" alt="Cinema Camera"
+                        class="absolute -right-20 -bottom-10 w-80 opacity-20 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700">
+                </div>
+
+                <!-- Pro Drones -->
+                <div
+                    class="gear-card group relative p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl overflow-hidden cursor-pointer">
+                    <div class="relative z-10">
+                        <span
+                            class="text-orange-600 text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Aerial</span>
+                        <h3 class="text-3xl font-bold mb-4 text-white">Pro Drones</h3>
+                        <p class="text-gray-400 mb-8 leading-relaxed">Cinema-ready aerial solutions with DJI Mavic 3
+                            Cine, Inspire 3, and custom FPV heavy-lifters.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center gap-2">✔ ProRes 422 HQ</li>
+                            <li class="flex items-center gap-2">✔ Dual Native ISO</li>
+                            <li class="flex items-center gap-2">✔ Long Range RC Pro</li>
+                        </ul>
+                    </div>
+                    <img src="./src/assets/drone.png" alt="Drone"
+                        class="absolute -right-10 -bottom-10 w-80 opacity-20 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700">
+                </div>
+
+                <!-- Lenses -->
+                <div
+                    class="gear-card group relative p-10 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-xl overflow-hidden cursor-pointer">
+                    <div class="relative z-10">
+                        <span
+                            class="text-orange-600 text-xs font-bold uppercase tracking-[0.2em] mb-4 block">Optics</span>
+                        <h3 class="text-3xl font-bold mb-4 text-white">Master Lenses</h3>
+                        <p class="text-gray-400 mb-8 leading-relaxed">Full coverage of prime and zoom sets from Zeiss
+                            CP.3, Cooke S4/i, and Sony G-Master series.</p>
+                        <ul class="space-y-3 text-sm text-gray-500 mb-8">
+                            <li class="flex items-center gap-2">✔ Ultra Sharp Optics</li>
+                            <li class="flex items-center gap-2">✔ Fast T-Stops</li>
+                            <li class="flex items-center gap-2">✔ Beautiful Bokeh</li>
+                        </ul>
+                    </div>
+                    <img src="./src/assets/lens.png" alt="Lens"
+                        class="absolute -right-10 -bottom-10 w-80 opacity-20 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer
+        class="py-12 px-8 md:px-24 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+        <div class="text-xl font-extrabold tracking-tighter">
+            ECR <span class="text-orange-600">STUDIO</span>
+        </div>
+        <div class="flex gap-12 text-sm text-gray-500">
+            <a href="#" class="hover:text-orange-600 transition-colors">Instagram</a>
+            <a href="#" class="hover:text-orange-600 transition-colors">Facebook</a>
+            <a href="#" class="hover:text-orange-600 transition-colors">YouTube</a>
+        </div>
+        <div class="text-gray-600 text-xs">
+            © 2026 ECR Rental Studio. All rights reserved.
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
+<!-- Location & Social -->
+<div class="md:col-span-3 text-center md:text-left">
+    <h4 class="text-white font-bold mb-8 uppercase tracking-widest text-[10px]">Visit & Follow</h4>
+    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
+        123 Studio Street,<br>Perundurai Road, Erode
+    </p>
+    <div class="flex gap-4 justify-center md:justify-start">
+        <a href="#"
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 transition-all group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-gray-400 group-hover:text-white">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+            </svg>
+        </a>
+        <a href="#"
+            class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center hover:bg-orange-600 hover:border-orange-600 transition-all group">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                class="text-gray-400 group-hover:text-white">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+        </a>
+    </div>
+</div>
+</div>
+
+<!-- Footer Bottom -->
+<div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+    <div class="flex items-center gap-4">
+        <div class="w-2 h-2 rounded-full bg-orange-600 animate-pulse"></div>
+        <span class="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-bold italic">QUALITY OVER
+            EVERYTHING</span>
+    </div>
+    <div class="text-[10px] uppercase tracking-[0.2em] text-gray-500 font-medium">
+        © 2026 ECR STUDIO. ALL RIGHTS RESERVED.
+    </div>
+</div>
+</div>
+</footer>
+
+<script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
