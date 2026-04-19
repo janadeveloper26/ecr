@@ -20,25 +20,32 @@ const Navbar = () => {
   ];
 
   return (
-    <nav style={{ padding: '1rem 2rem' }}>
-      <Link to="/" className="brand" style={{ fontSize: '1.2rem' }}>ECR RENTAL STUDIO</Link>
+    <nav style={{ padding: '1rem 5%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+      <div style={{ position: 'absolute', left: '5%' }}>
+        <Link to="/" className="brand" style={{ fontSize: '1.4rem', fontWeight: '900', letterSpacing: '-1px' }}>ECR RENTAL STUDIO</Link>
+      </div>
       
       {/* Desktop Links */}
-      <ul className="nav-links">
+      <ul className="nav-links" style={{ display: 'flex', gap: '2rem', listStyle: 'none', margin: 0, padding: 0 }}>
         {navLinks.map((link) => (
           <li key={link.name}>
             {link.hash && isHome ? (
-              <a href={link.hash}>{link.name}</a>
+              <a href={link.hash} style={{ fontSize: '0.9rem', fontWeight: '500' }}>{link.name}</a>
             ) : (
-              <Link to={link.path + (link.hash || '')}>{link.name}</Link>
+              <Link to={link.path + (link.hash || '')} style={{ fontSize: '0.9rem', fontWeight: '500' }}>{link.name}</Link>
             )}
           </li>
         ))}
       </ul>
 
-      <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-        <Link to="/booking" className="btn-primary" style={{ padding: '0.6rem 1.2rem', fontSize: '0.8rem', display: isOpen ? 'none' : 'block' }}>
-          Rent Now
+      <div style={{ position: 'absolute', right: '5%', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <Link to="/booking" className="btn-primary" style={{ 
+          padding: '0.7rem 1.8rem', 
+          fontSize: '0.85rem', 
+          borderRadius: '50px',
+          display: isOpen ? 'none' : 'block' 
+        }}>
+          RENT NOW
         </Link>
         
         {/* Mobile Toggle */}

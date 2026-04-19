@@ -96,7 +96,7 @@ button {
 
 /* --- Typography UI --- */
 .gradient-text {
-  background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+  background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -217,63 +217,50 @@ nav {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 4rem;
+  padding: 1rem 5%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.8);
-  backdrop-filter: blur(10px);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(15px);
   border-bottom: 1px solid var(--glass-border);
 }
 
 .nav-links {
   display: flex;
-  gap: 3rem;
+  gap: 2.5rem;
   list-style: none;
 }
 
-.nav-links a {
-  font-weight: 500;
-  opacity: 0.7;
-}
-
-.nav-links a:hover {
-  opacity: 1;
-  color: var(--primary);
-}
-
 .brand {
-  font-size: 1.5rem;
-  color: var(--primary);
+  font-size: 1.3rem;
+  font-weight: 800;
+}
+
+/* --- Mobile Nav Rules --- */
+.mobile-toggle {
+  display: none !important;
+}
+
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none !important;
+  }
+  .mobile-toggle {
+    display: block !important;
+  }
 }
 
 /* --- Responsive --- */
 @media (max-width: 1024px) {
   section { padding: 4rem 1.5rem; }
-}
-
-@media (max-width: 768px) {
-  nav {
-    padding: 0.8rem 1.5rem;
-  }
-  .brand {
-    font-size: 1.1rem !important;
-  }
-  .section-title {
-    font-size: 2rem !important;
-    margin-bottom: 2.5rem;
-    padding: 0 1rem;
-  }
-  
-  section {
-    padding: 5rem 1rem !important;
-  }
 
   .hero-section {
     flex-direction: column !important;
     min-height: 90vh !important;
     padding: 80px 0 40px 0 !important;
+    justify-content: flex-start !important;
   }
   
   .hero-content h1 {
@@ -281,52 +268,24 @@ nav {
     letter-spacing: -1px;
   }
   
-  .hero-content p {
-    font-size: 1rem !important;
-    line-height: 1.4;
-  }
-
   .hero-3d {
-    display: block !important;
-    height: 380px !important;
-    width: 100%;
-    order: -1; /* Keep it first */
-    margin-bottom: -2rem;
-  }
-  .hero-mobile-img {
-    display: none !important;
+    height: 320px !important;
+    order: -1;
+    margin-bottom: 0;
   }
 
-  /* Grid Adjustments */
-  .product-grid, .features-grid, .gear-grid {
-    grid-template-columns: 1fr !important;
-    gap: 1.5rem !important;
-  }
-
-  .glass-card {
-    padding: 1.5rem !important;
-    border-radius: 25px !important;
-  }
-
-  /* Pricing Cards on Mobile */
-  .pricing-card {
-    transform: none !important;
-    margin-bottom: 1.5rem;
-  }
-
-  /* Contact and Footer */
-  #contact > div {
-    gap: 2.5rem !important;
-  }
-  
-  .map-embed {
-    height: 250px !important;
+  .booking-container {
+    grid-template-columns: 1fr;
   }
 }
 
 @media (max-width: 480px) {
   .hero-content h1 {
     font-size: 2.5rem !important;
+  }
+  .btn-primary, .btn-outline {
+    width: 100%;
+    text-align: center;
   }
 }
 

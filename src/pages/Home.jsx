@@ -114,7 +114,9 @@ const Home = () => {
   return (
     <div className="home-page">
       <Hero />
-      <Features />
+      <div style={{ marginTop: '-60px', position: 'relative', zIndex: 20 }}>
+        <Features />
+      </div>
       <GearShowcase />
       <VideoSection />
       <Testimonials />

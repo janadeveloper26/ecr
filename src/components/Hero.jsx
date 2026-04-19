@@ -39,52 +39,64 @@ const Hero = () => {
     <section id="home" className="hero-section" style={{ 
       display: 'flex', 
       alignItems: 'center', 
-      padding: '0',
+      padding: '120px 0 60px 0',
       position: 'relative',
       overflow: 'hidden',
-      maxWidth: '100%',
+      maxWidth: '100vw',
+      minHeight: '85vh',
       margin: '0'
     }}>
       <div className="hero-content" style={{ 
-        flex: 1, 
-        paddingLeft: '6rem', 
+        flex: 1.2, 
+        paddingLeft: '8%', 
         zIndex: 10,
-        position: 'relative'
+        position: 'relative',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center'
       }}>
         <motion.h1 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="gradient-text" style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', lineHeight: '0.9', fontWeight: '900' }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          style={{ 
+            fontSize: 'clamp(3rem, 8vw, 6.5rem)', 
+            lineHeight: '0.9', 
+            fontWeight: '900', 
+            letterSpacing: '-2px', 
+            marginBottom: '1.5rem',
+            textShadow: '0 10px 30px rgba(0,0,0,0.5)'
+          }}
         >
-          CAPTURE <br /> LIKE A PRO
+          CAPTURE <br /> <span className="gradient-text" style={{ filter: 'drop-shadow(0 0 20px var(--accent-glow))' }}>LIKE A PRO</span>
         </motion.h1>
         <motion.p 
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: "easeOut" }}
-          style={{ fontSize: '1.2rem', color: 'var(--text-dim)', margin: '2rem 0', maxWidth: '500px' }}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+          style={{ fontSize: '1.25rem', color: 'var(--text-dim)', margin: '1rem 0 2.5rem 0', maxWidth: '550px', lineHeight: '1.6' }}
         >
           Premium Camera & Drone Rentals in Erode. Experience world-class professional gear.
         </motion.p>
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          style={{ display: 'flex', gap: '1.5rem' }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap' }}
         >
-          <Link to="/booking" className="btn-primary">Rent Now</Link>
-          <a href="#gear" className="btn-outline">Explore Gear</a>
+          <Link to="/booking" className="btn-primary" style={{ padding: '1.2rem 2.8rem', fontSize: '1rem' }}>RENT NOW</Link>
+          <a href="#gear" className="btn-outline" style={{ padding: '1.2rem 2.8rem', fontSize: '1rem' }}>EXPLORE GEAR</a>
         </motion.div>
       </div>
 
       <div className="hero-3d" style={{ 
-        flex: 1.2, 
-        height: '100%', 
+        flex: 1, 
+        height: '600px', 
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        zIndex: 5
       }}>
         <Suspense fallback={
           <div className="loading-3d" style={{ color: 'var(--primary)', letterSpacing: '2px', padding: '2rem' }}>
@@ -93,27 +105,27 @@ const Hero = () => {
         }>
           <Canvas 
             shadows 
-            dpr={[1, 1.5]} 
+            dpr={[1, 2]} 
             camera={{ position: [0, 0, 5], fov: 40 }}
             style={{ background: 'transparent', height: '100%', width: '100%' }}
           >
-            <ambientLight intensity={0.8} />
-            <spotLight position={[5, 10, 5]} angle={0.3} penumbra={1} intensity={2} castShadow />
-            <pointLight position={[-5, -5, -5]} intensity={0.5} />
+            <ambientLight intensity={1} />
+            <spotLight position={[5, 10, 5]} angle={0.3} penumbra={1} intensity={3} castShadow />
+            <pointLight position={[-5, -5, -5]} color="#ff6a00" intensity={1} />
             
-            <group scale={1.2}>
+            <group scale={0.8} rotation={[0, -Math.PI / 8, 0]}>
               <CameraModel />
             </group>
             
             <ContactShadows 
-              position={[0, -1.2, 0]} 
-              opacity={0.5} 
-              scale={8} 
-              blur={2.5} 
+              position={[0, -1.5, 0]} 
+              opacity={0.6} 
+              scale={10} 
+              blur={2} 
               far={4} 
             />
             
-            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.8} />
+            <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={1} />
           </Canvas>
         </Suspense>
       </div>
